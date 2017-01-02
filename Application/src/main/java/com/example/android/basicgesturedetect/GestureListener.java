@@ -120,12 +120,16 @@ public class GestureListener extends GestureDetector.SimpleOnGestureListener {
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
                             float distanceY) {
         // User attempted to scroll
-        Log.i(TAG, "Scroll" + getTouchType(e1) + " length: " + distance(distanceX, distanceY));
+        Log.i(TAG, "Scroll" + getTouchType(e1) + " length: " + roundedDistance(distanceX, distanceY));
         return false;
     }
 
     private float distance(float distanceX, float distanceY) {
         return Float.valueOf(Double.toString(Math.sqrt(distanceX * distanceX + distanceY * distanceY)));
+    }
+
+    private int roundedDistance(float distanceX, float distanceY) {
+        return Math.round(Float.valueOf(Double.toString(Math.sqrt(distanceX * distanceX + distanceY * distanceY))));
     }
 
     @Override
